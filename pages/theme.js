@@ -15,7 +15,6 @@ export default function Theme() {
         users: selectedUserValues
       },
     })
-      .then(res => setTheme(res.data))
       .catch(error => console.error(error))
   };
 

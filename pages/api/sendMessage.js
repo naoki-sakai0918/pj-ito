@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         text: 'あなたの数字は' + randomNumber + 'です！',
       });
       console.log(response);
-      res.status(200).json({ message: 'メッセージが送信されました。' });
+      res.status(200).send('ok');
     }
   } catch (err) {
     console.error(err);
