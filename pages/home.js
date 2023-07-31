@@ -69,7 +69,7 @@ export default function Home() {
         <DialogTitle>このメンバーでゲームを始めますか？</DialogTitle>
         <DialogContent>
           {selectedUsers && selectedUsers.map(user => (
-            <Typography key={user.value} sx={{ fontSize: 18, marginBottom: 8 }}>{user.label}</Typography>
+            <Typography key={user.value} sx={{ fontSize: 18 }}>{user.label}</Typography>
           ))}
         </DialogContent>
         <DialogActions sx={{ justifyContent: 'center', paddingTop: '16px' }}>
@@ -95,7 +95,7 @@ export default function Home() {
               },
             }}
           >
-            ちょっと待って…
+            選びなおす
           </Button>
         </DialogActions>
       </Dialog>
