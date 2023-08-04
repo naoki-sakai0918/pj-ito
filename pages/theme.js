@@ -5,21 +5,37 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import LifePoints from './lifePoints';
 
+
 export default function Theme() {
   const [theme, setTheme] = useState("");
   const [selectedStage, setSelectedStage] = useState(1);
   const router = useRouter();
-  const { selectedUserValues, selectedUserLabels } = router.query;
-
+  const {selectedUserValues} = router.query;
+  
   const sendNumber = () => {
-    axios.get('/api/sendMessage', {
-      params: {
-        users: selectedUserValues,
-        stage: selectedStage,
-        theme: theme,
-      },
-    })
+    let generatedNumbers = new Set();
+    for (let user of JSON.parse(selectedUserValues)) {
+      let message = `ステージ${selectedStage} : お題は「${theme}」\nあなたの数字は`;
+      for (let i = 1; i <= selectedStage; i++) {
+        let randomNumber;
+        do {
+          randomNumber = Math.floor(Math.random() * 100) + 1;
+        } while (generatedNumbers.has(randomNumber));
+        generatedNumbers.add(randomNumber);
+        message += randomNumber;
+        if (i !== selectedStage) {
+          message += ', ';
+        }
+      }
+      message += 'です！';
+      axios.get('/api/sendMessage', {
+        params: {
+          user: user,
+          msg: message,
+        },
+      })
       .catch(error => console.error(error))
+    }
   };
 
   const getTheme = () => {

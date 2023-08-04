@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <Container maxWidth="sm" className="container" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <Box textAlign="center" mb={4}>
-        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: '#2196f3' }}>ito風カードゲーム</Typography>
+        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: '#2196f3' }}>ito</Typography>
       </Box>
       <Box mt={2} display="flex" justifyContent="center">
         <Box sx={{ minWidth: 180 }}>
