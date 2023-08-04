@@ -15,6 +15,7 @@ async function sendMessage(user, message) {
 }
 
 export default async function handler(req, res) {
+  console.log('Received request:', req.query);
   try {
     const selectedUserId = JSON.parse(req.query.users);
     const stage = req.query.stage;
@@ -36,7 +37,9 @@ export default async function handler(req, res) {
         }
       }
       message += 'です！';
-      await sendMessage(user, message); // `await`を追加
+
+      await sendMessage(user, message); 
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
     res.status(200).send('ok');
   } catch (err) {
