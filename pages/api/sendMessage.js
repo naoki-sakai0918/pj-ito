@@ -2,6 +2,15 @@ import { WebClient } from '@slack/web-api';
 
 const web = new WebClient(process.env.SLACK_API_TOKEN);
 
+async function sendMessage(user, message) {
+  const response = await web.chat.postMessage({
+    channel: user,
+    text: message,
+  });
+  console.log(response);
+  res.status(200).send('ok');
+}
+
 export default async function handler(req, res) {
   try {
     const selectedUserId = JSON.parse(req.query.users);
@@ -26,13 +35,7 @@ export default async function handler(req, res) {
         }
       }
       message += 'です！';
-
-      const response = await web.chat.postMessage({
-        channel: user,
-        text: message,
-      });
-      console.log(response);
-      res.status(200).send('ok');
+      sendMessage(user, message);
     }
   } catch (err) {
     console.error(err);
