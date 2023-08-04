@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <Container maxWidth="sm" className="container" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
       <Box textAlign="center" mb={4}>
-        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: '#2196f3' }}>ito風カードゲーム</Typography>
+        <Typography variant="h3" component="h1" sx={{ fontWeight: 700, color: '#2196f3' }}>ito</Typography>
       </Box>
       <Box mt={2} display="flex" justifyContent="center">
         <Box sx={{ minWidth: 180 }}>
@@ -69,7 +69,7 @@ export default function Home() {
         <DialogTitle>このメンバーでゲームを始めますか？</DialogTitle>
         <DialogContent>
           {selectedUsers && selectedUsers.map(user => (
-            <Typography key={user.value} sx={{ fontSize: 18, marginBottom: 8 }}>{user.label}</Typography>
+            <Typography key={user.value} sx={{ fontSize: 18 }}>{user.label}</Typography>
           ))}
         </DialogContent>
         <DialogActions sx={{ justifyContent: 'center', paddingTop: '16px' }}>
@@ -95,7 +95,7 @@ export default function Home() {
               },
             }}
           >
-            ちょっと待って…
+            選びなおす
           </Button>
         </DialogActions>
       </Dialog>
